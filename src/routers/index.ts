@@ -4,5 +4,5 @@ import { stopRouter } from "./stops";
 
 export const mainRouter = Router();
 
-mainRouter.use("/", presetRouter);
-mainRouter.use("/", stopRouter);
+mainRouter.use("/presets", presetRouter);
+mainRouter.use("/stops", stopRouter);
