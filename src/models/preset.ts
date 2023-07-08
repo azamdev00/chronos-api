@@ -4,6 +4,7 @@ export interface Stop {
   _id: ObjectId;
   ms: number;
   sc: number;
+  email: string;
 }
 
 export interface Preset {
@@ -18,4 +19,5 @@ export interface Preset {
   tapOnLap: boolean;
   type: string;
   value: string[];
+  email: string;
 }
