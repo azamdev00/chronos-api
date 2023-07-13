@@ -79,3 +79,54 @@ export const updatePresets = catchAsync(
     }
   }
 );
+
+export const updateCurrentPresets = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { email, data } = req.body;
+
+      const preset = await DBCollections.currentPresets.findOne({ email });
+
+      if (!preset)
+        await DBCollections.currentPresets.insertOne({ email, ...data });
+      else
+        await DBCollections.currentPresets.updateOne(
+          { email },
+          { $set: { ...data } }
+        );
+
+      const response: ResponseObject = {
+        code: "ok",
+        message: "Presets Updated Successfully",
+        status: "success",
+      };
+
+      res.status(203).json(response);
+    } catch (error) {
+      console.log(error);
+      return next(new AppError("server_error", "Please try again later", 500));
+    }
+  }
+);
+
+export const getCurrentPresets = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { email, data } = req.body;
+
+      const preset = await DBCollections.currentPresets.findOne({ email });
+
+      const response: ResponseObject = {
+        code: "ok",
+        message: "Presets Updated Successfully",
+        status: "success",
+        items: preset,
+      };
+
+      res.status(200).json(response);
+    } catch (error) {
+      console.log(error);
+      return next(new AppError("server_error", "Please try again later", 500));
+    }
+  }
+);
