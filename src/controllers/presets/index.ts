@@ -112,7 +112,7 @@ export const updateCurrentPresets = catchAsync(
 export const getCurrentPresets = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { email, data } = req.body;
+      const email: string = req.query.email as string;
 
       const preset = await DBCollections.currentPresets.findOne({ email });
 
