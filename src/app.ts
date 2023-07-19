@@ -35,7 +35,7 @@ export const initializeApp = () => {
 
   app.get("/api", (req, res) => {
     return res.status(200).json({
-      name: "PMS Admin Server",
+      name: "Chronos Server",
       version: "v1.0.0",
     });
   });
