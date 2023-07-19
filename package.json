@@ -1,14 +1,13 @@
 {
   "name": "pms-server",
   "version": "1.0.0",
-  "description": "Backend server with node js, typescript and mysql",
+  "description": "Backend server with node js, typescript and mongodb",
   "main": "index.js",
   "author": "Azam Dev",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/index.ts",
     "clean": "rimraf build/",
-    "copy-files": "copyfiles -u 1 src/public/**/* build/",
     "build": "yarn clean && tsc && yarn copy-files",
     "start": "node ./build/index.js"
   },
