@@ -27,7 +27,9 @@ export const initializeApp = () => {
 
   app.use(
     cors({
-      origin: '*'
+      origin: process.env.ALLOWED_ORIGINS!.split(','),
+      credentials: true,
+      exposedHeaders: "Content-Disposition",
     })
   );
 
