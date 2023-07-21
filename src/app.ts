@@ -35,8 +35,8 @@ export const initializeApp = () => {
 
   app.get("/api", (req, res) => {
     return res.status(200).json({
-      name: "Chronos Server",
-      version: "v1.0.0",
+      name: "Chronos Server API",
+      version: "v1.1.0",
     });
   });
 
