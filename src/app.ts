@@ -25,7 +25,7 @@ export const initializeApp = () => {
 
   app.use(
     cors({
-      origin: '',
+      origin: '*',
       // credentials: true,
       // exposedHeaders: "Content-Disposition",
     })
