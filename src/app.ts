@@ -23,9 +23,11 @@ export const initializeApp = () => {
 
   app.use(morgan("tiny"));
 
+  console.log(process.env.ALLOWED_ORIGINS!.split(','))
+
   app.use(
     cors({
-      origin: process.env.ALLOWED_ORIGINS!,
+      origin: process.env.ALLOWED_ORIGINS!.split(','),
       credentials: true,
       exposedHeaders: "Content-Disposition",
     })
