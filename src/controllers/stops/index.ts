@@ -43,7 +43,10 @@ export const addStop = catchAsync(
 export const getStops = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const stops: Stop[] = await DBCollections.stops.find().toArray();
+      const email: string = req.query.email as string;
+
+      
+      const stops: Stop[] = await DBCollections.stops.find({email}).toArray();
 
       const response: ResponseObject = {
         code: "ok",
