@@ -10,26 +10,24 @@ import { mainRouter } from "./routers";
 export const initializeApp = () => {
   const app: Application = express();
 
+  app.use(
+    cors({
+      origin: true,
+      credentials: true,
+    })
+  );
   app.use(cookieParser());
 
-  app.use((req, res, next) => {
-    if (req.originalUrl === "/api/webhook") {
-      return express.raw({ type: "application/json" })(req, res, next);
-    }
+  // app.use((req, res, next) => {
+  //   if (req.originalUrl === "/socket.io") {
+  //     return cors()(req, res, next);
+  //   }
 
-    return express.json()(req, res, next);
-  });
+  //   return express.json()(req, res, next);
+  // });
   app.use(express.urlencoded({ extended: true }));
 
   app.use(morgan("tiny"));
-
-  app.use(
-    cors({
-      origin: '*',
-      // credentials: true,
-      // exposedHeaders: "Content-Disposition",
-    })
-  );
 
   app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
